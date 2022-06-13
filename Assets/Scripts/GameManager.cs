@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameState State;
     public static event Action<GameState> OnGameStateChanged;
+    bool gameHasEnded = false;
+    float restartDelay = 2f;
 
     void Awake()
     {
@@ -47,6 +50,19 @@ public class GameManager : MonoBehaviour
 
     private void HandleRaceBegin()
     {
+    }
+
+    public void EndGame()
+    {
+        if(gameHasEnded == false)
+        {
+            gameHasEnded = true;
+            Invoke("Restart", restartDelay);
+        }
+    }
+    void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 
