@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - FinishLine
+  - Destination
+  - Opponent
   layers:
   - Default
   - TransparentFX

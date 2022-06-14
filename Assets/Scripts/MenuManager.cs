@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject raceBegin;
+    [SerializeField] private GameObject[] racing;
     [SerializeField] private Text countdownDisplay;
 
     public int countdownTime = 5;
@@ -29,6 +30,12 @@ public class MenuManager : MonoBehaviour
         {
             StartCoroutine(CountdownToStart());
         }
+
+        //can improve this
+        for(int i = 0; i < racing.Length; i++)
+        {
+            racing[i].SetActive(state==GameState.Racing);
+        }
     }
 
     IEnumerator CountdownToStart()
@@ -40,6 +47,7 @@ public class MenuManager : MonoBehaviour
             countdownTime--;
         }
         countdownDisplay.text = "GO!";
+        yield return new WaitForSeconds(1f);
         GameManager.Instance.State = GameState.Racing;
 
         yield return new WaitForSeconds(1f);

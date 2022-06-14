@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 6251202732320128709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13, y: 0.1, z: 1.5}
+  m_LocalScale: {x: 13, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 6251202732852108391}
   m_RootOrder: 0
@@ -90,7 +90,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 876cb77a04fa9124ab85ec6b73c0c9f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -290,6 +290,22 @@ CapsuleCollider:
   m_Height: 0.25618502
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &1377570618793113904
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485695914725014800}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.2, y: 0.128, z: 0.05}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!114 &6251202732039809841
 MonoBehaviour:
   m_ObjectHideFlags: 0
