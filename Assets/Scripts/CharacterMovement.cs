@@ -6,14 +6,17 @@ public class CharacterMovement : MonoBehaviour
 {
     public Rigidbody rb;
     Animator animator;
+    Vector3 winDestination;
     public float speed = 5;
     float horizontalInput;
     float horizontalMultiplier = 2;
-    
+    bool isCharInPaintPos = false;
+    float podiumWalkSpeed = 0.3f;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        winDestination = GameObject.FindWithTag("Destination").transform.position;
     }
 
     void FixedUpdate()
@@ -24,6 +27,19 @@ public class CharacterMovement : MonoBehaviour
             Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime * horizontalMultiplier;
             rb.MovePosition(rb.position + forwardMove + horizontalMove);
             animator.SetBool("isRunning", true);
+        }
+        if(GameManager.Instance.State == GameState.Victory)
+        {
+            if(!isCharInPaintPos)
+            {
+                Debug.Log("moving to destination");
+                transform.position = Vector3.MoveTowards(transform.position, winDestination, podiumWalkSpeed);
+                if(transform.position == winDestination)
+                {
+                    isCharInPaintPos = true;
+                    animator.SetBool("isRunning", false);
+                }
+            }
         }
     }
 
