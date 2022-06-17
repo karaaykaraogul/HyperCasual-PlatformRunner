@@ -24,6 +24,7 @@ public class Draw : MonoBehaviour
     int redCount;
     int whiteCount = 0;
     bool startedPainting = false;
+    float paintPercentage = 0;
 
     void Start()
     {
@@ -35,16 +36,32 @@ public class Draw : MonoBehaviour
 
     void Update()
     {
-        //NEED TO GET WHITE PIXEL COUNT AT THE STARTING OF DRAWING
-        Drawing();
-        
-        if (/*isPerformingScreenGrab &&*/Time.time >= nextSnapshotTime)
+        if(GameManager.Instance.State == GameState.Victory)
         {
-            StartCoroutine(TakeSnapshot());
-            nextSnapshotTime = Time.time + 1f / snapshotRate;
-            Debug.Log(nextSnapshotTime);
+            Drawing();
+            
+            if (Time.time >= nextSnapshotTime)
+            {
+                StartCoroutine(TakeSnapshot());
+                nextSnapshotTime = Time.time + 1f / snapshotRate;
+            }
+            
+        }
+    }
+
+    public int GetCurrentPercent()
+    {
+        if(paintPercentage != ((float) redCount/(float) whiteCount) * 100)
+        {
+            paintPercentage = ((float) redCount/(float) whiteCount) * 100;
         }
         
+        if(paintPercentage >= 97)
+        {
+            paintPercentage = 100;
+        }
+
+        return (int) paintPercentage;
     }
 
     public IEnumerator TakeSnapshot()
@@ -76,22 +93,28 @@ public class Draw : MonoBehaviour
         Color[] pixels = destinationTexture.GetPixels();
         foreach(var pixel in pixels)
         {
-            if(pixel == Color.red)
+            if(ColorEqual(pixel, Color.red))
             {
                 redCount++;
             }
             if(!startedPainting)
             {
-                if(pixel == paintableWallRenderer.material.color)
+                if(ColorEqual(pixel, paintableWallRenderer.material.color))
                 {
                     whiteCount++;
                 }
             }
         }
-        Debug.Log("red" + redCount);
-        Debug.Log("white" + whiteCount);
         // Reset the isPerformingScreenGrab state
         isPerformingScreenGrab = false;
+    }
+
+    bool ColorEqual(Color color1, Color color2)
+    {
+        float threshold = 0.1f; //Exact value should be found by trying different. Possibly different values for      different colors.
+        return (Mathf.Abs(color1.r - color2.r) < threshold
+        && Mathf.Abs(color1.g - color2.g) < threshold
+        && Mathf.Abs(color1.b - color2.b) < threshold);
     }
 
     void Drawing()

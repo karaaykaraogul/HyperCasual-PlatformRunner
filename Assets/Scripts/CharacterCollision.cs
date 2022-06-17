@@ -24,6 +24,7 @@ public class CharacterCollision : MonoBehaviour
 
         if(collision.collider.tag == "FinishLine")
         {
+            GameObject.FindWithTag("FinishLine").SetActive(false);
             FindObjectOfType<GameManager>().WinRace();
         }
     }

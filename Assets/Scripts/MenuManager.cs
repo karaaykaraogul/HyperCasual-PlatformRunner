@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject raceBegin;
     [SerializeField] private GameObject[] racing;
+    [SerializeField] private GameObject victory;
     [SerializeField] private Text countdownDisplay;
 
     public int countdownTime = 5;
@@ -36,6 +37,8 @@ public class MenuManager : MonoBehaviour
         {
             racing[i].SetActive(state==GameState.Racing);
         }
+
+        victory.SetActive(state == GameState.Victory);
     }
 
     IEnumerator CountdownToStart()

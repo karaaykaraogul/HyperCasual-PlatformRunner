@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     GameObject finishArea;
     [SerializeField] private Text rankingText;
     [SerializeField] private Text racersText;
+    [SerializeField] private Text paintPercent;
+    Draw draw;
     bool gameHasEnded = false;
     float restartDelay = 2f;
     int ranking = 0;
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
         opponents = GameObject.FindGameObjectsWithTag("Opponent").ToList();
         player = GameObject.FindGameObjectWithTag("Player");
         finishArea = GameObject.FindGameObjectWithTag("FinishLine");
+        draw = FindObjectOfType<Draw>();
         racersText.text = opponents.Count().ToString();
     }
 
@@ -45,6 +48,12 @@ public class GameManager : MonoBehaviour
             {
                 rankingText.text = ranking.ToString();
             }
+        }
+
+        if(GameManager.Instance.State == GameState.Victory)
+        {
+            UpdateGameState(GameState.Victory);
+            paintPercent.text = draw.GetCurrentPercent().ToString();
         }
     }
 
