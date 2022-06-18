@@ -10,6 +10,7 @@ TagManager:
   - Opponent
   - Paintable
   - RedPainting
+  - Water
   layers:
   - Default
   - TransparentFX

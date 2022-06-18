@@ -15,7 +15,7 @@ public class OpponentCollision : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Obstacle")
+        if (collision.collider.tag == "Obstacle" || collision.collider.tag == "Water")
         {
             animator.SetTrigger("hasDied");
             oc.StopAgent();
