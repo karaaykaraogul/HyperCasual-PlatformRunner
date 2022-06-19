@@ -44,6 +44,10 @@ public class CharacterMovement : MonoBehaviour
 
             }
         }
+        if(GameManager.Instance.State == GameState.Lose)
+        {
+            animator.SetBool("isRunning", false);
+        }
     }
 
     void Update()

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     bool gameHasEnded = false;
     float restartDelay = 2f;
     int ranking = 0;
+    int totalRacers = 0;
 
     void Awake()
     {
@@ -34,7 +35,8 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         finishArea = GameObject.FindGameObjectWithTag("FinishLine");
         draw = FindObjectOfType<Draw>();
-        racersText.text = opponents.Count().ToString();
+        totalRacers = opponents.Count() + 1;
+        racersText.text = totalRacers.ToString();
     }
 
     void Update()
@@ -54,6 +56,24 @@ public class GameManager : MonoBehaviour
         {
             UpdateGameState(GameState.Victory);
             paintPercent.text = draw.GetCurrentPercent().ToString();
+            if(draw.GetCurrentPercent() >= 100)
+            {
+                FinishGame();
+            }
+            foreach(var opponent in opponents)
+            {
+                Destroy(opponent);
+            }
+        }
+
+        if(GameManager.Instance.State == GameState.Lose)
+        {
+            UpdateGameState(GameState.Lose);
+        }
+
+        if(GameManager.Instance.State == GameState.Finish)
+        {
+            UpdateGameState(GameState.Finish);
         }
     }
 
@@ -79,7 +99,6 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.RaceBegin:
-                HandleRaceBegin();
                 break;
             case GameState.Racing:
                 break;
@@ -97,10 +116,6 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(newState);
     }
 
-    private void HandleRaceBegin()
-    {
-    }
-
     
     public void WinRace()
     {
@@ -110,6 +125,11 @@ public class GameManager : MonoBehaviour
     public void LoseRace()
     {
         GameManager.Instance.State = GameState.Lose;
+    }
+
+    public void FinishGame()
+    {
+        GameManager.Instance.State = GameState.Finish;
     }
 
     public void EndGame()

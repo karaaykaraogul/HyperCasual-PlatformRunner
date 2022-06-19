@@ -300,7 +300,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.2, y: 0.128, z: 0.05}
+  m_Extents: {x: 0.1, y: 0.128, z: 0.05}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0
@@ -320,4 +320,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLeft: {fileID: 6251202732258832635}
   targetRight: {fileID: 6251202732401804092}
-  speed: 0.2
+  speed: 0.15

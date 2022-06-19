@@ -9,19 +9,25 @@ public class OpponentCollision : MonoBehaviour
     [SerializeField] ParticleSystem collisionParticle = null;
     [SerializeField] Transform startingPoint;
 
+    bool isDead = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Obstacle" || collision.collider.tag == "Water")
+        if(!isDead)
         {
-            animator.SetTrigger("hasDied");
-            oc.StopAgent();
-            oc.enabled = false;
-            Invoke("ResetPosition", 2f);
-            Explode();
+            if (collision.collider.tag == "Obstacle" || collision.collider.tag == "Water")
+            {
+                isDead = true;
+                Explode();
+                animator.SetTrigger("hasDied");
+                oc.StopAgent();
+                oc.enabled = false;
+                StartCoroutine(ResetPos());
+            }
         }
 
         if(collision.collider.tag == "FinishLine")
@@ -35,10 +41,13 @@ public class OpponentCollision : MonoBehaviour
         collisionParticle.Play();
     }
 
-    void ResetPosition()
+    IEnumerator ResetPos()
     {
+        yield return new WaitForSeconds(0.01f);
         transform.position = startingPoint.position;
         oc.enabled = true;
+        isDead = false;
         animator.SetTrigger("isReset");
+        yield return null;
     }
 }

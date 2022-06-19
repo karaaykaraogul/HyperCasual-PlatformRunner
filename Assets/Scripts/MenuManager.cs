@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject raceBegin;
     [SerializeField] private GameObject[] racing;
     [SerializeField] private GameObject victory;
+    [SerializeField] private GameObject finish;
     [SerializeField] private Text countdownDisplay;
 
     public int countdownTime = 5;
@@ -39,6 +40,8 @@ public class MenuManager : MonoBehaviour
         }
 
         victory.SetActive(state == GameState.Victory);
+
+        finish.SetActive(state == GameState.Finish || state == GameState.Lose);
     }
 
     IEnumerator CountdownToStart()
@@ -49,8 +52,6 @@ public class MenuManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             countdownTime--;
         }
-        countdownDisplay.text = "GO!";
-        yield return new WaitForSeconds(1f);
         GameManager.Instance.State = GameState.Racing;
 
         yield return new WaitForSeconds(1f);

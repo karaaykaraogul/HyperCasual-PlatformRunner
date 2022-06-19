@@ -45,7 +45,6 @@ public class Draw : MonoBehaviour
                 StartCoroutine(TakeSnapshot());
                 nextSnapshotTime = Time.time + 1f / snapshotRate;
             }
-            
         }
     }
 
