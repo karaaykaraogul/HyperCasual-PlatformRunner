@@ -6,7 +6,7 @@ public class HalfDonutMovingStickObstacleController : MonoBehaviour
 {
     [SerializeField] Transform targetLeft;
     [SerializeField] Transform targetRight;
-    float timeInterval = 10.0f;
+    float timeInterval = 5.0f;
     float timer = 0.0f;
     bool isExtending;
     float speed = 10f;

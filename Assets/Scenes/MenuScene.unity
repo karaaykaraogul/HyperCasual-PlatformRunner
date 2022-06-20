@@ -631,6 +631,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1060019560865440829, guid: 09cdd67e64538254e9570014074564c7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dbca4c7813d4a0d4db4c96357d4ad97a, type: 2}
     - target: {fileID: 919132149155446097, guid: 09cdd67e64538254e9570014074564c7, type: 3}
       propertyPath: m_Name
       value: Boy
@@ -642,7 +646,7 @@ PrefabInstance:
     - target: {fileID: 8628009443987643349, guid: 09cdd67e64538254e9570014074564c7, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: dbca4c7813d4a0d4db4c96357d4ad97a, type: 2}
+      objectReference: {fileID: 2100000, guid: 77a876755af6df642b4a6c903379ca94, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09cdd67e64538254e9570014074564c7, type: 3}
 --- !u!1 &504594537

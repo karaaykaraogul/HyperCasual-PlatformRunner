@@ -55,7 +55,7 @@ public class Draw : MonoBehaviour
             paintPercentage = ((float) redCount/(float) whiteCount) * 100;
         }
         
-        if(paintPercentage >= 97)
+        if(paintPercentage >= 90)
         {
             paintPercentage = 100;
         }
