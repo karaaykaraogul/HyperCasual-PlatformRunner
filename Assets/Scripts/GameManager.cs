@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        if(gameHasEnded == false)
+        if(!gameHasEnded)
         {
             gameHasEnded = true;
             Invoke("Restart", restartDelay);
