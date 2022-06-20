@@ -20,7 +20,6 @@ public class Draw : MonoBehaviour
     Renderer paintableWallRenderer;
     float snapshotRate = 1f;
     float nextSnapshotTime = 0f;
-    private bool isPerformingScreenGrab;
     int redCount;
     int whiteCount = 0;
     bool startedPainting = false;
@@ -105,7 +104,6 @@ public class Draw : MonoBehaviour
             }
         }
         // Reset the isPerformingScreenGrab state
-        isPerformingScreenGrab = false;
     }
 
     bool ColorEqual(Color color1, Color color2)
@@ -126,7 +124,6 @@ public class Draw : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     CreateBrush();
-                    isPerformingScreenGrab = true;
                     startedPainting = true;
                 }
                 if(Input.GetKey(KeyCode.Mouse0))
@@ -138,7 +135,6 @@ public class Draw : MonoBehaviour
                         AddAPoint(mousePos);
                         lastPos = mousePos;
                     }
-                    isPerformingScreenGrab = true;
                     startedPainting = true;
                 }
             }

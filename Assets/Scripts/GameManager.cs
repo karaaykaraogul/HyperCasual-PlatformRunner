@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         UpdateGameState(GameState.RaceBegin);
         opponents = GameObject.FindGameObjectsWithTag("Opponent").ToList();
         player = GameObject.FindGameObjectWithTag("Player");

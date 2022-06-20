@@ -12,7 +12,6 @@ public class CharacterMovement : MonoBehaviour
     float horizontalMultiplier = 2;
     bool isCharInPaintPos = false;
     bool isCamInPaintPos = false;
-    float podiumWalkSpeed = 0.3f;
 
     void Start()
     {
@@ -33,11 +32,9 @@ public class CharacterMovement : MonoBehaviour
         {
             if(!isCharInPaintPos && !isCamInPaintPos)
             {
-                Debug.Log("moving to destination");
                 transform.position = Vector3.MoveTowards(transform.position, winDestination, 10);
                 if(transform.position == winDestination)
                 {
-                    Debug.Log("yerinde");
                     isCharInPaintPos = true;
                     animator.SetBool("isRunning", false);
                 }
