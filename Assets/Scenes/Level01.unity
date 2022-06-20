@@ -7290,10 +7290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceBegin: {fileID: 1813541108}
-  racing:
-  - {fileID: 1138864424}
-  - {fileID: 234186031}
-  - {fileID: 420192071}
+  racing: {fileID: 607524967}
   victory: {fileID: 549784960}
   finish: {fileID: 674067324}
   countdownDisplay: {fileID: 520298771}

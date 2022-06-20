@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject raceBegin;
-    [SerializeField] private GameObject[] racing;
+    [SerializeField] private GameObject racing;
     [SerializeField] private GameObject victory;
     [SerializeField] private GameObject finish;
     [SerializeField] private Text countdownDisplay;
@@ -33,11 +33,7 @@ public class MenuManager : MonoBehaviour
             StartCoroutine(CountdownToStart());
         }
 
-        //can improve this
-        for(int i = 0; i < racing.Length; i++)
-        {
-            racing[i].SetActive(state==GameState.Racing);
-        }
+        racing.SetActive(state == GameState.Racing);
 
         victory.SetActive(state == GameState.Victory);
 
