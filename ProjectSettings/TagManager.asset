@@ -4,22 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Obstacle
-  - FinishLine
-  - Destination
-  - Opponent
-  - Paintable
-  - RedPainting
-  - Water
+  - PlayerEyes
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - Paint
-  - FinishLine
+  - 
+  - 
   - 
   - 
   - 
