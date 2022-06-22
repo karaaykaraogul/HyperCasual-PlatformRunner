@@ -48,7 +48,7 @@ public class MenuManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             countdownTime--;
         }
-        GameManager.Instance.State = GameState.Racing;
+        FindObjectOfType<GameManager>().StartRace();
 
         yield return new WaitForSeconds(1f);
         countdownDisplay.gameObject.SetActive(false);

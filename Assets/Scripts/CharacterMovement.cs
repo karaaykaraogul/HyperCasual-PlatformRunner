@@ -32,8 +32,10 @@ public class CharacterMovement : MonoBehaviour
         {
             if(!isCharInPaintPos && !isCamInPaintPos)
             {
-                transform.position = Vector3.MoveTowards(transform.position, winDestination, 10);
-                if(transform.position == winDestination)
+                if(Vector3.Distance(transform.position,winDestination) >= 1f){
+                    transform.position = Vector3.MoveTowards(transform.position, winDestination, 5 * Time.deltaTime);
+                }
+                else
                 {
                     isCharInPaintPos = true;
                     animator.SetBool("isRunning", false);

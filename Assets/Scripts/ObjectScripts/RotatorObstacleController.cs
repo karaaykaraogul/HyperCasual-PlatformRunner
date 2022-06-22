@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RotatorObstacleController : MonoBehaviour
 {
-    float direction = 50;
+    float direction = 40;
     int randDirection;
 
     void Start()
@@ -14,6 +15,7 @@ public class RotatorObstacleController : MonoBehaviour
         {
             direction = -direction;
         }
+        
     }
 
     void Update()

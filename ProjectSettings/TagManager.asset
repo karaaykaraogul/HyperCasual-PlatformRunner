@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerEyes
+  - Water
+  - FinishLine
+  - Destination
+  - Obstacle
+  - Opponent
+  - Waypoint
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,6 @@ public class MousePainter : MonoBehaviour{
     public bool mouseSingleClick;
     [Space]
     public Color paintColor;
-
     private GameObject paintableObject;
     private Renderer objectRenderer;
     private Texture2D texture2D;
@@ -25,13 +24,19 @@ public class MousePainter : MonoBehaviour{
     int redCount;
     float paintPercentage;
 
+    int texScaledWidth = 0;
+    int texScaledHeight = 0;
+
     void Start()
     {
         paintableObject = FindObjectOfType<Paintable>().gameObject;
         objectRenderer = paintableObject.GetComponent<Renderer>();
         mainTex = objectRenderer.material.mainTexture;
         destinationTexture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-        textureArea = mainTex.width*mainTex.height;
+        texScaledWidth = (int) ((mainTex.width * Screen.width) / 1920);
+        texScaledHeight = (int) ((mainTex.height * Screen.height) / 1080);
+
+        textureArea = texScaledHeight * texScaledWidth;
     }
 
     void Update(){
@@ -86,13 +91,17 @@ public class MousePainter : MonoBehaviour{
 
     public int GetPaintPercent()
     {
-        paintPercentage = (((float) redCount/(float) textureArea) * 100)*2;
+        paintPercentage = (((float) redCount/(float) textureArea) * 100);
+        if(paintPercentage >= 90)
+        {
+            paintPercentage = 100;
+        }
         return (int) paintPercentage;
     }
 
     bool ColorEqual(Color color1, Color color2)
     {
-        float threshold = 0.3f; //Exact value should be found by trying different. Possibly different values for different colors.
+        float threshold = 0.36f; //Exact value should be found by trying different. Possibly different values for different colors.
         return (Mathf.Abs(color1.r - color2.r) < threshold
         && Mathf.Abs(color1.g - color2.g) < threshold
         && Mathf.Abs(color1.b - color2.b) < threshold);

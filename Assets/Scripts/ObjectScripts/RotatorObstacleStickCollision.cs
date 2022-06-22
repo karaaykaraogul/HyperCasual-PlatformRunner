@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotatorObstacleStickCollision : MonoBehaviour
 {
-    float direction = 100;
+    float direction = 50;
     private void OnCollisionEnter(Collision coll)
     {
         Rigidbody collRb = coll.gameObject.GetComponent<Rigidbody>();

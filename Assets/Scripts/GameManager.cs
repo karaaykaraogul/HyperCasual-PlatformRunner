@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         finishArea = GameObject.FindGameObjectWithTag("FinishLine");
         mp = FindObjectOfType<MousePainter>();
+        mp.enabled = false;
         totalRacers = opponents.Count() + 1;
         racersText.text = totalRacers.ToString();
     }
@@ -44,7 +45,6 @@ public class GameManager : MonoBehaviour
     {
         if(GameManager.Instance.State == GameState.Racing)
         {
-            UpdateGameState(GameState.Racing);
             ranking = GetCurrentRanking();
             
             if(ranking != Convert.ToInt32(rankingText.text))
@@ -55,26 +55,14 @@ public class GameManager : MonoBehaviour
 
         if(GameManager.Instance.State == GameState.Victory)
         {
-            UpdateGameState(GameState.Victory);
-            paintPercent.text = mp.GetPaintPercent().ToString();
-            if(mp.GetPaintPercent() >= 100)
+            if(Convert.ToInt32(paintPercent.text) != mp.GetPaintPercent())
             {
-                FinishGame();
+                paintPercent.text = mp.GetPaintPercent().ToString();
+                if(mp.GetPaintPercent() >= 100)
+                {
+                    FinishGame();
+                }
             }
-            foreach(var opponent in opponents)
-            {
-                Destroy(opponent);
-            }
-        }
-
-        if(GameManager.Instance.State == GameState.Lose)
-        {
-            UpdateGameState(GameState.Lose);
-        }
-
-        if(GameManager.Instance.State == GameState.Finish)
-        {
-            UpdateGameState(GameState.Finish);
         }
     }
 
@@ -104,6 +92,7 @@ public class GameManager : MonoBehaviour
             case GameState.Racing:
                 break;
             case GameState.Victory:
+                HandleVictory();
                 break;
             case GameState.Lose:
                 break;
@@ -117,20 +106,38 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(newState);
     }
 
+    public void StartRace()
+    {
+        GameManager.Instance.State = GameState.Racing;
+        UpdateGameState(GameState.Racing);
+    }
+
     
     public void WinRace()
     {
         GameManager.Instance.State = GameState.Victory;
+        UpdateGameState(GameState.Victory);
     }
 
     public void LoseRace()
     {
         GameManager.Instance.State = GameState.Lose;
+        UpdateGameState(GameState.Lose);
     }
 
     public void FinishGame()
     {
         GameManager.Instance.State = GameState.Finish;
+        UpdateGameState(GameState.Finish);
+    }
+
+    void HandleVictory()
+    {
+        mp.enabled = true;
+        foreach(var opponent in opponents)
+        {
+            Destroy(opponent);
+        }
     }
 
     public void EndGame()
