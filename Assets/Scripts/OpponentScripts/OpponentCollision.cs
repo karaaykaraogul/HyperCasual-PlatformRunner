@@ -24,6 +24,7 @@ public class OpponentCollision : MonoBehaviour
                 isDead = true;
                 Explode();
                 animator.SetTrigger("hasDied");
+                oc.StopAgent();
                 oc.enabled = false;
                 StartCoroutine(ResetPos());
             }

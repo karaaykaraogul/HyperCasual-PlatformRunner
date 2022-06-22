@@ -9,7 +9,7 @@ public class OpponentController : MonoBehaviour
     NavMeshAgent agent;
     Animator animator;
     Vector3 finishPoint;
-    List<GameObject> waypoints;
+    public List<GameObject> waypoints;
     float accuracy = 10;
     int currentWP = 0;
     bool started = false;
@@ -19,7 +19,6 @@ public class OpponentController : MonoBehaviour
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         finishPoint = GameObject.FindWithTag("Destination").transform.position;
-        waypoints = GameObject.FindGameObjectsWithTag("Waypoint").ToList();
     }
 
     void FixedUpdate()
@@ -40,8 +39,17 @@ public class OpponentController : MonoBehaviour
                 }
             }
 
-            
+            agent.isStopped = false;
         }
+        else
+        {
+            StopAgent();
+        }
+    }
+
+    public void StopAgent()
+    {
+        agent.isStopped = true;
     }
 
     void SetDestination()
