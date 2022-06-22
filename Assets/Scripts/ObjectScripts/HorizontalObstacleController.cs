@@ -8,7 +8,7 @@ public class HorizontalObstacleController : MonoBehaviour
     [SerializeField] private GameObject targetRight;
     bool isFlipped = false;
     bool isMovingRight = true;
-    public float speed = 0.2f;
+    public float speed = 5f;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class HorizontalObstacleController : MonoBehaviour
         Vector3 obstaclePos = transform.position;
         if(isMovingRight)
         {
-            transform.position = Vector3.MoveTowards(obstaclePos,targetRight.transform.position, speed);
+            transform.position = Vector3.MoveTowards(obstaclePos,targetRight.transform.position, speed*Time.deltaTime);
             if(!isFlipped)
             {
                 isMovingRight = (obstaclePos.x++ >= targetRight.transform.position.x) ? false : true;
@@ -33,7 +33,7 @@ public class HorizontalObstacleController : MonoBehaviour
             }
         }
         else{
-            transform.position = Vector3.MoveTowards(obstaclePos,targetLeft.transform.position, speed);
+            transform.position = Vector3.MoveTowards(obstaclePos,targetLeft.transform.position, speed*Time.deltaTime);
             if(!isFlipped)
             {
                 isMovingRight = (obstaclePos.x-- <= targetLeft.transform.position.x) ? true : false;

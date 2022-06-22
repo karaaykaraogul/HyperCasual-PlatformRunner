@@ -35,15 +35,12 @@ public class OpponentController : MonoBehaviour
 
             if(Vector3.Distance(waypoints[currentWP].transform.position, gameObject.transform.position) < accuracy)
             {
-                SetDestination();
+                if(currentWP+1 < waypoints.Count()){
+                    SetDestination();
+                }
             }
 
-            agent.isStopped = false;
             
-        }
-        else
-        {
-            StopAgent();
         }
     }
 
@@ -51,10 +48,5 @@ public class OpponentController : MonoBehaviour
     {
         currentWP++;
         agent.SetDestination(waypoints[currentWP].transform.position);
-    }
-
-    public void StopAgent()
-    {
-        agent.isStopped = true;
     }
 }
