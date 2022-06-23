@@ -5071,6 +5071,7 @@ MonoBehaviour:
   oc: {fileID: 7473200502713766020}
   collisionParticle: {fileID: 7473200502153402945}
   startingPoint: {fileID: 7473200503728813612}
+  cc: {fileID: 7473200502713766019}
 --- !u!114 &7473200502713766020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5083,6 +5084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f58cdcd0ac08f140b74a4d861cd8101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
 --- !u!195 &7473200502713766021
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5092,8 +5094,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 7743743377543331070}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
-  m_Speed: 5
+  m_Radius: 0.6
+  m_Speed: 4.9
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 0

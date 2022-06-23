@@ -936,7 +936,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.015, y: 0.010651312, z: 0.10582493}
+  m_Size: {x: 0.018, y: 0.010651312, z: 0.10582493}
   m_Center: {x: 0, y: 0, z: 0.075266294}
 --- !u!114 &359507416
 MonoBehaviour:
@@ -1416,6 +1416,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texturePaint: {fileID: 4800000, guid: 20c4be2d963e3c84392692fe93bac97a, type: 3}
   extendIslands: {fileID: 4800000, guid: a264723e3b480144eb19ebb31245f397, type: 3}
+--- !u!136 &481070985 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 7473200502713766019, guid: 413e71e2c214f324daf46d7a4ba9966f, type: 3}
+  m_PrefabInstance: {fileID: 1700722228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &493924515
 GameObject:
   m_ObjectHideFlags: 0
@@ -7634,7 +7639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 7.22, z: -14.330006}
+  m_LocalPosition: {x: 0, y: 7.22, z: -12.450006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8572,7 +8577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 09cdd67e64538254e9570014074564c7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.2
+      value: -0.48
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 09cdd67e64538254e9570014074564c7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9254,7 +9259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7473200503756634846, guid: 413e71e2c214f324daf46d7a4ba9966f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7473200503756634846, guid: 413e71e2c214f324daf46d7a4ba9966f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9469,6 +9474,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7473200502713766017, guid: 413e71e2c214f324daf46d7a4ba9966f, type: 3}
+      propertyPath: cc
+      value: 
+      objectReference: {fileID: 481070985}
     - target: {fileID: 7473200502713766020, guid: 413e71e2c214f324daf46d7a4ba9966f, type: 3}
       propertyPath: waypoints.Array.size
       value: 3

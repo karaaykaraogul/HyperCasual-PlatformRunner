@@ -8,6 +8,7 @@ public class OpponentCollision : MonoBehaviour
     Animator animator;
     [SerializeField] ParticleSystem collisionParticle = null;
     [SerializeField] Transform startingPoint;
+    [SerializeField] CapsuleCollider cc;
 
     bool isDead = false;
 
@@ -26,6 +27,7 @@ public class OpponentCollision : MonoBehaviour
                 animator.SetTrigger("hasDied");
                 oc.StopAgent();
                 oc.enabled = false;
+                cc.enabled = false;
                 StartCoroutine(ResetPos());
             }
         }
@@ -46,6 +48,7 @@ public class OpponentCollision : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         transform.position = startingPoint.position;
         oc.enabled = true;
+        cc.enabled = true;
         isDead = false;
         animator.SetTrigger("isReset");
         yield return null;

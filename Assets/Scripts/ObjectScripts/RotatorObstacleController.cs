@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class RotatorObstacleController : MonoBehaviour
 {
-    float direction = 40;
+    float direction = 25;
     int randDirection;
 
     void Start()

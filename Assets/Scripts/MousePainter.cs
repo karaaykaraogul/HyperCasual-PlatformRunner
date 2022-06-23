@@ -33,8 +33,8 @@ public class MousePainter : MonoBehaviour{
         objectRenderer = paintableObject.GetComponent<Renderer>();
         mainTex = objectRenderer.material.mainTexture;
         destinationTexture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-        texScaledWidth = (int) ((mainTex.width * Screen.width) / 1920);
-        texScaledHeight = (int) ((mainTex.height * Screen.height) / 1080);
+        texScaledWidth = (int) ((mainTex.width * Screen.width) / 1600);
+        texScaledHeight = (int) ((mainTex.height * Screen.height) / 1600);
 
         textureArea = texScaledHeight * texScaledWidth;
     }
